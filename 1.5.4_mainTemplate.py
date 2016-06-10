@@ -25,9 +25,9 @@ speed_intvar = Tkinter.IntVar()
 speed_intvar.set(3) # Initialize y coordinate
 # radius and x-coordinate of circle
 r = 10
-x = 150
-y = 150
-direction = 0.5 # radians of angle in standard position, ccw from positive x axis
+x = 300
+y = 400
+direction = 1.57 # radians of angle in standard position, ccw from positive x axis
  
 circle_item = canvas.create_oval(x-r, y-r, x+r, y+r, 
                                  outline='#000000', fill='#00FFFF')
