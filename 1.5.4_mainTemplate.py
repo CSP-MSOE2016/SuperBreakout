@@ -21,7 +21,6 @@ text = Tkinter.Label(root, text='Place off screen buttons here')
 text.grid(row=0, column=4)
 
 ref_list = [] # create empty list to reference blocks for collision
-# comkment
 
 ######
 # Create View
@@ -29,20 +28,18 @@ ref_list = [] # create empty list to reference blocks for collision
 # Create and place a canvas
 canvas = Tkinter.Canvas(root, width=800, height=600, background='#AAAAAA')
 canvas.grid(row=2, rowspan=2, column=4)
-
-
 #####
-
+# This is a placeholder for additional controls, such as score
 text = Tkinter.Label(root, text='Place off screen buttons here')
 text.grid(row=0, column=4)
 
 ######
-# Create brick(s)
+# Brick Methods
 ######
-'''counter = 0
-while counter < 5:
-'''
 
+# This method should be called from animate, and will check for collisons
+# and remove bricks from the list if they have be hit by the ball.
+# Will return True if collision, otherwise false
 def process_blocks(list_of_blocks,canvas,ball):
     
     for block in list_of_blocks:
@@ -61,7 +58,7 @@ def process_blocks(list_of_blocks,canvas,ball):
                  return True  # there was a collision
     return False
 
- 
+# This method will create rows of bricks
 def draw_rows(rows):  
     ''' This code draws the blocks across the board
         and then down on the next rows
@@ -84,22 +81,11 @@ def draw_rows(rows):
             counter += 1 
         y0 += 25
         y1 += 25
-    print ref_list
-            
+#    print ref_list
+ 
+# call create to create the bricks           
 draw_rows(6)    
 
-'''
-    
-def callback():
-    xba1, yba1, xba2, yba2 = canvas.coords(ball)
-    canvas.coords(ball,xba1, yba1-10, xba2, yba2-10)
-    process_blocks(ref_list,canvas,ball)
-
-b = Tkinter.Button(root, text="OK", command=callback)
-b.grid(row=0, column=1)
-      
-ball = canvas.create_oval(400, 300, 420, 320, outline='#000000', fill='#00FFFF')      
-'''
 
 # Create a circle on the canvas to match the initial model
 speed_intvar = Tkinter.IntVar()
@@ -108,11 +94,12 @@ speed_intvar.set(10) # Initialize y coordinate
 r = 10
 x = 300
 y = 400
-direction = 1 # radians of angle in standard position, ccw from positive x axis
+direction = 1.1 # radians of angle in standard position, ccw from positive x axis
  
 circle_item = canvas.create_oval(x-r, y-r, x+r, y+r, 
                                  outline='#000000', fill='#00FFFF')
 
+# Called automatically to animate ball
 def animate():
     # Get the slider data and create x- and y-components of velocity
     velocity_x = speed_intvar.get() * math.cos(direction) # adj = hyp*cos()
@@ -138,7 +125,7 @@ def animate():
     if x2>canvas.winfo_width() or x1<0: 
         direction = math.pi - direction # Reverse the x-component of velocity
     # If crossing top or bottom
-    if y2>canvas.winfo_height() or y2<0: 
+    if y2>canvas.winfo_height() or y1<0: 
         direction = -1 * direction # Reverse the y-component of velocity
     
     # Create an event in 1 msec that will be handled by animate(),
