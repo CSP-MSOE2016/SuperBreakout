@@ -19,6 +19,7 @@ root = Tkinter.Tk()
 text = Tkinter.Label(root, text='Place off screen buttons here')
 text.grid(row=0, column=4)
 
+ref_list = [] # create empty list to reference blocks for collision
 # comkment
 
 ######
@@ -37,12 +38,9 @@ text.grid(row=0, column=4)
 ######
 # Create brick(s)
 ######
-<<<<<<< HEAD
 '''counter = 0
 while counter < 5:
 '''
-blocks = [] #empty list    
-blocks.append(canvas.create_rectangle(5,5,100,25, fill="red"))
 
 def process_blocks(list_of_blocks,canvas,ball):
     
@@ -60,7 +58,6 @@ def process_blocks(list_of_blocks,canvas,ball):
                  canvas.itemconfig(block, fill="black")
                  return True  # there was a collision
     return False
-=======
 
  
 def draw_rows(rows):  
@@ -71,7 +68,7 @@ def draw_rows(rows):
                     "white", "orange"]
     y0 = 5
     y1 = 25
-    ref_list = [] # create empty list to reference blocks for collision
+    
     for row in range(rows):
         color = random.choice(colors)
         counter = 0
@@ -88,24 +85,18 @@ def draw_rows(rows):
     print ref_list
             
 draw_rows(6)    
-    
-'''def draw_all():
-     This code will call to the draw_code() 
-        function and draw a few rows of blocks
-        allowing for the program to draw a full board
-    
-    count = 0
-    y0 = 3
-    y1 = 25
-    while count < 4:
-        draw_row()
-        y0 += 25
-        y1 += 25
-'''
-       
-        
 
->>>>>>> origin/blocks
+ball = canvas.create_oval(400, 300, 420, 320, outline='#000000', fill='#00FFFF')      
+    
+def callback():
+    xba1, yba1, xba2, yba2 = canvas.coords(ball)
+    canvas.coords(ball,xba1, yba1-10, xba2, yba2-10)
+    process_blocks(ref_list,canvas,ball)
+
+b = Tkinter.Button(root, text="OK", command=callback)
+b.grid(row=0, column=1)
+      
+ball = canvas.create_oval(400, 300, 420, 320, outline='#000000', fill='#00FFFF')      
 
 #######
 # Event Loop
