@@ -56,7 +56,8 @@ def process_blocks(list_of_blocks,canvas,ball):
                  # collision!!!
                  list_of_blocks.remove(block)
                  # for now, make block black
-                 canvas.itemconfig(block, fill="black")
+                 canvas.itemconfig(block, fill='#AAAAAA')
+                 canvas.itemconfig(block, outline='#AAAAAA')
                  return True  # there was a collision
     return False
 
@@ -172,10 +173,3 @@ root.mainloop()
 
 
 
-
-
-
-#######
-# Event Loop
-#######
-root.mainloop()
