@@ -4,6 +4,7 @@
 ####
 
 import Tkinter #often people import Tkinter as *
+import random
 ''' Test comment for syncing
 '''
 
@@ -36,6 +37,7 @@ text.grid(row=0, column=4)
 ######
 # Create brick(s)
 ######
+<<<<<<< HEAD
 '''counter = 0
 while counter < 5:
 '''
@@ -58,6 +60,52 @@ def process_blocks(list_of_blocks,canvas,ball):
                  canvas.itemconfig(block, fill="black")
                  return True  # there was a collision
     return False
+=======
+
+ 
+def draw_rows(rows):  
+    ''' This code draws the blocks across the board
+        and then down on the next rows
+    '''
+    colors = ["red", "blue", "green", "cyan", "magenta", "yellow",
+                    "white", "orange"]
+    y0 = 5
+    y1 = 25
+    ref_list = [] # create empty list to reference blocks for collision
+    for row in range(rows):
+        color = random.choice(colors)
+        counter = 0
+        x0 = 3
+        x1 = 80
+        while counter < 10:
+            color = random.choice(colors)
+            ref_list.append(canvas.create_rectangle(x0,y0,x1,y1, fill=color))
+            x0 += 80
+            x1 += 80
+            counter += 1 
+        y0 += 25
+        y1 += 25
+    print ref_list
+            
+draw_rows(6)    
+    
+'''def draw_all():
+     This code will call to the draw_code() 
+        function and draw a few rows of blocks
+        allowing for the program to draw a full board
+    
+    count = 0
+    y0 = 3
+    y1 = 25
+    while count < 4:
+        draw_row()
+        y0 += 25
+        y1 += 25
+'''
+       
+        
+
+>>>>>>> origin/blocks
 
 #######
 # Event Loop
