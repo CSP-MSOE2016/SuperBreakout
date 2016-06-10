@@ -138,7 +138,7 @@ def animate():
     if x2>canvas.winfo_width() or x1<0: 
         direction = math.pi - direction # Reverse the x-component of velocity
     # If crossing top or bottom
-    if y2>canvas.winfo_height(): 
+    if y2>canvas.winfo_height() or y2<0: 
         direction = -1 * direction # Reverse the y-component of velocity
     
     # Create an event in 1 msec that will be handled by animate(),
