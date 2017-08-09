@@ -20,9 +20,7 @@ root = Tkinter.Tk()
 text = Tkinter.Label(root, text='Place off screen buttons here')
 text.grid(row=0, column=4)
 
-ref_list = [] # create empty list to reference blocks for collision
 
-######
 # Create View
 #######
 # Create and place a canvas
@@ -36,6 +34,7 @@ text.grid(row=0, column=4)
 ######
 # Brick Methods
 ######
+
 
 # This method should be called from animate, and will check for collisons
 # and remove bricks from the list if they have be hit by the ball.
@@ -133,6 +132,7 @@ def animate():
     canvas.after(1, animate)
 # Call function directly to start the recursion
 animate()
+
 
 #test
 #######
